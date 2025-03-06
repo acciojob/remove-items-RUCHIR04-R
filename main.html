@@ -1,27 +1,60 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<style type="text/css"> 
-			body {margin: 30px;} 
-		</style>  
-		<meta charset=utf-8 /> 
-		<title>Remove items from a dropdown list</title>
-	</head>
+<head>
+    <style type="text/css">
+        body {
+            margin: 30px;
+        }
 
-	<body>
-		<form> 
-			<select id="colorSelect"> 
-				<option>Red</option> 
-				<option>Green</option> 
-				<option>White</option> 
-				<option>Black</option> 
-			</select> 
-			<input type="button" value="Select and Remove"> 
-		</form>
+        select {
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
 
-		<script type="text/javascript" src="./script.js">
-		</script>
+        input[type="button"] {
+            padding: 5px 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
-	</body>
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <meta charset=utf-8 />
+    <title>Remove items from a dropdown list</title>
+</head>
 
+<body>
+    <form>
+        <select id="colorSelect">
+            <option>Red</option>
+            <option>Green</option>
+            <option>White</option>
+            <option>Black</option>
+        </select>
+        <input type="button" value="Select and Remove" id="removeButton">
+    </form>
+
+    <script type="text/javascript">
+        const colorSelect = document.getElementById('colorSelect');
+        const removeButton = document.getElementById('removeButton');
+
+        removeButton.addEventListener('click', function() {
+            const selectedOption = colorSelect.options[colorSelect.selectedIndex];
+            
+            if (selectedOption) {
+                colorSelect.removeChild(selectedOption);
+            } else {
+                alert("No option selected!");
+            }
+        });
+    </script>
+</body>
 </html>
